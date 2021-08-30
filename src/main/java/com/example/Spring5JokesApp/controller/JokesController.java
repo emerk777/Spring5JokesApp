@@ -5,10 +5,10 @@
  */
 package com.example.Spring5JokesApp.controller;
 
-import com.example.Spring5JokesApp.services.JokesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.example.Spring5JokesApp.services.JokeService;
 
 /**
  *
@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class JokesController {
     
-    JokesService jokesService;
+    private final JokeService jokeService;
 
-    public JokesController(JokesService jokesService) {
-        this.jokesService = jokesService;
+    public JokesController(JokeService jokeService) {
+        this.jokeService = jokeService;
     }
     
-    @RequestMapping("/")
-    public String returnJokes(Model model){
+    @RequestMapping({"/",""})
+    public String showJoke(Model model){
         
-        model.addAttribute("jokes", jokesService.getJoke());
+        model.addAttribute("joke", jokeService.getJoke());
 
         return "Jokes/index";
     }

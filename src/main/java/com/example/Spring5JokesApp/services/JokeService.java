@@ -9,7 +9,7 @@ package com.example.Spring5JokesApp.services;
  *
  * @author emer
  */
-public interface JokesService {
+public interface JokeService {
     
     String getJoke();
 }
